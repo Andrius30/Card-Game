@@ -10,12 +10,14 @@ public class CardSpawner : NetworkBehaviour
 {
     public static Action onSceneLoadedDone;
 
+    public Transform canvasTransform;
     public List<InvisibleCard> oponentInHandsList = new List<InvisibleCard>();
     public InvisibleCard invisibleCard;
     public GameObject placedCardPrefab;
     public GameObject emptyCardPrefab;
     public Transform oponentHandLayout;
     public Transform handLayout;
+    public Vector2 mouseOffset;
 
     [SerializeField] List<Card> cardDec = new List<Card>();
     [SerializeField] List<Card> inHandsList = new List<Card>();

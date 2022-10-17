@@ -1,8 +1,9 @@
 using Fusion;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerMoveHandler
+public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     public static int ID;
 
@@ -13,10 +14,12 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
     [SerializeField] int cost;
     [SerializeField] int power;
     [SerializeField] GameObject hoverCard;
-
-    static CardSpawner spawner;
+   
     public static GameObject emptyCard;
+    static CardSpawner spawner;
+
     int cardSiblingIndex;
+    bool clickedOnCard = false;
 
     void Awake()
     {
@@ -26,31 +29,44 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             if (emptyCard != null)
             {
-                transform.SetSiblingIndex(cardSiblingIndex);
+                transform.SetParent(spawner.handLayout);
                 Destroy(emptyCard);
+                transform.SetSiblingIndex(cardSiblingIndex);
+                clickedOnCard = false;
             }
         }
+        if (!clickedOnCard) return;
+        if (hoverCard.activeInHierarchy)
+            ToggeleHoverCard(id, false);
+
+        Vector2 pos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(spawner.canvasTransform as RectTransform, Input.mousePosition, spawner.canvasTransform.GetComponent<Canvas>().worldCamera, out pos);
+        transform.position = Vector2.Lerp(transform.position, spawner.canvasTransform.TransformPoint(pos), Time.deltaTime);
+        if (transform.parent != spawner.canvasTransform)
+            transform.parent = spawner.canvasTransform;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         // TODO: set card info to hover card on enter
-        hoverCard.SetActive(true);
-        spawner.RPC_HoverCard(id, true);
+        if (!clickedOnCard)
+        {
+            ToggeleHoverCard(id, true);
+        }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        hoverCard.SetActive(false);
-        spawner.RPC_HoverCard(id, false);
+        ToggeleHoverCard(id, false);
     }
     public void OnPointerDown(PointerEventData eventData)
     {
         if (emptyCard == null)
         {
+            clickedOnCard = true;
             cardSiblingIndex = transform.GetSiblingIndex();
             emptyCard = Instantiate(spawner.emptyCardPrefab, spawner.handLayout);
             emptyCard.transform.SetSiblingIndex(cardSiblingIndex);
@@ -61,11 +77,9 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
         // TODO: Create Networked card object with collider
     }
 
-    public void OnPointerMove(PointerEventData eventData)
+    void ToggeleHoverCard(int id, bool enable)
     {
-        //var position = Camera.main.WorldToScreenPoint(Input.mousePosition);
-        //transform.parent = null;
-        //transform.position = position;
+        hoverCard.SetActive(enable);
+        spawner.RPC_HoverCard(id, enable);
     }
-
 }

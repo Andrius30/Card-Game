@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   id: 3
+  rect: {fileID: 8953359210283334721}
   cardName: 
   cardDescription: 
   cost: 0

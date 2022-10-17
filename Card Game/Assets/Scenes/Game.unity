@@ -826,11 +826,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  canvasTransform: {fileID: 704111273}
   oponentInHandsList: []
   invisibleCard: {fileID: 8452306395663571995, guid: 03cb3490cf827e14bbafb952c59a4a61, type: 3}
   placedCardPrefab: {fileID: 8953359210283334726, guid: aaf8e3f0366248947a12fdb58177a419, type: 3}
   emptyCardPrefab: {fileID: 8953359210283334726, guid: bf19941b51a2c1149b4abe02da534234, type: 3}
   oponentHandLayout: {fileID: 1948861975}
+  handLayout: {fileID: 1666368135}
   cardDec:
   - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
   - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
@@ -844,7 +846,6 @@ MonoBehaviour:
   - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
   inHandsList: []
   startingCardInHandsCount: 3
-  handLayout: {fileID: 1666368135}
   countdownText: {fileID: 46012157}
 --- !u!4 &2061264673
 Transform:
