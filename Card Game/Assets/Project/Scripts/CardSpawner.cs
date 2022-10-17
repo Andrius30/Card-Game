@@ -12,12 +12,14 @@ public class CardSpawner : NetworkBehaviour
 
     public List<InvisibleCard> oponentInHandsList = new List<InvisibleCard>();
     public InvisibleCard invisibleCard;
+    public GameObject placedCardPrefab;
+    public GameObject emptyCardPrefab;
     public Transform oponentHandLayout;
+    public Transform handLayout;
 
     [SerializeField] List<Card> cardDec = new List<Card>();
     [SerializeField] List<Card> inHandsList = new List<Card>();
     [SerializeField] int startingCardInHandsCount = 3;
-    [SerializeField] Transform handLayout;
     [SerializeField] TextMeshProUGUI countdownText;
 
     const float time = 2f;
@@ -60,7 +62,7 @@ public class CardSpawner : NetworkBehaviour
     {
         var invisCard = GetInvisibleCardById(id);
         EnableInvisibleCard(invisCard, enable);
-    } 
+    }
     #endregion
 
     public InvisibleCard GetInvisibleCardById(int id)

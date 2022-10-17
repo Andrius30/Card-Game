@@ -302,6 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 935251bd4d3ee644b9ae2f2da2a54782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCardField: {fileID: 0}
+  oponentCardField: {fileID: 0}
   playersJoined: 0
 --- !u!1 &519420028
 GameObject:
@@ -659,7 +661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad380b56baf6c446a3362362c545e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debuging: 0
+  debuging: 1
+  runner: {fileID: 0}
   status: 0
 --- !u!114 &1076834258
 MonoBehaviour:
