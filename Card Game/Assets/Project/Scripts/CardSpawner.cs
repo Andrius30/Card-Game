@@ -17,7 +17,7 @@ public class CardSpawner : NetworkBehaviour
     public GameObject emptyCardPrefab;
     public Transform oponentHandLayout;
     public Transform handLayout;
-    public Vector2 mouseOffset;
+    public float cardFallowMouseSpeed = 5;
 
     [SerializeField] List<Card> cardDec = new List<Card>();
     [SerializeField] List<Card> inHandsList = new List<Card>();

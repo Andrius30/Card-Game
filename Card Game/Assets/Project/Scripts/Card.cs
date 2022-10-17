@@ -45,7 +45,7 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
         Vector2 pos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(spawner.canvasTransform as RectTransform, Input.mousePosition, spawner.canvasTransform.GetComponent<Canvas>().worldCamera, out pos);
-        transform.position = Vector2.Lerp(transform.position, spawner.canvasTransform.TransformPoint(pos), Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, spawner.canvasTransform.TransformPoint(pos), Time.deltaTime * spawner.cardFallowMouseSpeed);
         if (transform.parent != spawner.canvasTransform)
             transform.parent = spawner.canvasTransform;
     }
