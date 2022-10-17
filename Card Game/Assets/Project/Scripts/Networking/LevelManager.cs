@@ -35,6 +35,7 @@ public class LevelManager : NetworkSceneManagerBase
             // Delay one frame
             yield return null;
             m_Callbacks.SetConnectionStatus(FusionCallbacks.ConnectionStatus.Loaded, "");
+         
         }
         finished(sceneObjects);
     }

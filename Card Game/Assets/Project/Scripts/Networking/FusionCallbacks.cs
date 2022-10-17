@@ -1,6 +1,7 @@
 using Fusion;
 using Fusion.Sockets;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,9 +10,14 @@ public class FusionCallbacks : MonoBehaviour, INetworkRunnerCallbacks
 {
     Action<NetworkRunner, FusionCallbacks.ConnectionStatus, string> onConnect;
 
-    NetworkRunner runner;
+    [SerializeField] bool debuging = false;
+
+    public static PlayerRef localPlayerRef;
+
+    public NetworkRunner runner;
     LevelManager levelManager;
-    ConnectionStatus status;
+    [SerializeField] ConnectionStatus status;
+    public static ConnectionStatus Status;
 
     public enum ConnectionStatus
     {
@@ -32,7 +38,7 @@ public class FusionCallbacks : MonoBehaviour, INetworkRunnerCallbacks
 
         runner = gameObject.AddComponent<NetworkRunner>();
         runner.name = name;
-        runner.ProvideInput = false;
+        runner.ProvideInput = true;
 
         SetConnectionStatus(ConnectionStatus.Connecting, "");
 
@@ -50,17 +56,24 @@ public class FusionCallbacks : MonoBehaviour, INetworkRunnerCallbacks
     public void SetConnectionStatus(ConnectionStatus status, string message)
     {
         this.status = status;
+        Status = status;
         if (onConnect != null)
             onConnect(runner, status, message);
     }
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
+        localPlayerRef = player;
         SetConnectionStatus(status, "Player joined");
         if (runner.IsServer)
         {
             GameManager.instance.playersJoined++;
         }
-        if(GameManager.instance.playersJoined == 2)
+        StartCoroutine(DelayedLevelLoading()); // delay to load level if debuging, because it loads straight to game scene and then back to lobby
+    }
+    IEnumerator DelayedLevelLoading()
+    {
+        yield return new WaitForSeconds(1f);
+        if (GameManager.instance.playersJoined == 2 || debuging)
         {
             levelManager.LoadLevel(2);
         }

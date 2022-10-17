@@ -659,6 +659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad380b56baf6c446a3362362c545e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debuging: 0
+  status: 0
 --- !u!114 &1076834258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,7 +1213,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!1 &1725751682
 GameObject:
