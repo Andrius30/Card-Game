@@ -5,6 +5,8 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using Timer = Andrius.Core.Timers.Timer;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CardSpawner : NetworkBehaviour
 {
@@ -17,12 +19,18 @@ public class CardSpawner : NetworkBehaviour
     public GameObject emptyCardPrefab;
     public Transform oponentHandLayout;
     public Transform handLayout;
+    public Transform playerField;
     public float cardFallowMouseSpeed = 5;
+    public Vector2 cardOffset;
+    public EventSystem eventSystem;
+    public GraphicRaycaster raycaster;
+    public List<Card> inHandsList = new List<Card>();
 
     [SerializeField] List<Card> cardDec = new List<Card>();
-    [SerializeField] List<Card> inHandsList = new List<Card>();
     [SerializeField] int startingCardInHandsCount = 3;
     [SerializeField] TextMeshProUGUI countdownText;
+
+    [HideInInspector] public Canvas canvas;
 
     const float time = 2f;
     Timer countDownTimer;
@@ -31,6 +39,8 @@ public class CardSpawner : NetworkBehaviour
     {
         countDownTimer = new Timer(time, OnDoneSpawn, false, false);
         countdownText.gameObject.SetActive(true);
+
+        canvas = canvasTransform.GetComponent<Canvas>();
     }
     void Update()
     {
