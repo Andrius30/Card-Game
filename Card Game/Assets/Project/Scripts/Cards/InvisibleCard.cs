@@ -5,6 +5,6 @@ using UnityEngine;
 /// </summary>
 public class InvisibleCard : MonoBehaviour
 {
-    public int ID;
+    public string ID;
     public GameObject hoverCard;
 }

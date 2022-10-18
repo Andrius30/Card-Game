@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4788314467e9a3c43aa03373ad5a8f81, type: 3}
+  m_Name: Charmander
+  m_EditorClassIdentifier: 
+  guiId: 76e9dae63c7c77a40961ce87f0785e2e
+  cardID: 76e9dae63c7c77a40961ce87f0785e2e
+  cardPrefab: {fileID: 8953359210283334726, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
+  placedCardPrefab: {fileID: 8953359210283334726, guid: aaf8e3f0366248947a12fdb58177a419, type: 3}
+  cardIcon: {fileID: 21300000, guid: adf3273767d060c4e830b86ae6d456ed, type: 3}
+  cardName: Charmander
+  cardDecription: Charmander is easily the most mild-mannered and well-behaved of
+    its evolution line. Its feelings and emotions can be read by the flame on the
+    tip of its tail.
+  cost: 1
+  power: 1
+  cardHealth: 2

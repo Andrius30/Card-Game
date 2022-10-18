@@ -361,6 +361,57 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &495029214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 495029216}
+  - component: {fileID: 495029215}
+  m_Layer: 0
+  m_Name: CardsDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &495029215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495029214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721c937948184584cb388f2f2edb9a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: be7ecc09dc151c7419ad4f0167186523, type: 2}
+  - {fileID: 11400000, guid: e940d72077ac9224f95d11900368d012, type: 2}
+  - {fileID: 11400000, guid: 1e6c397cf2bf7f44fa814b97cb98c9c8, type: 2}
+  - {fileID: 11400000, guid: 76e9dae63c7c77a40961ce87f0785e2e, type: 2}
+  - {fileID: 11400000, guid: 5635d6a11d58a804a84a34314170f8e8, type: 2}
+  - {fileID: 11400000, guid: 31aa2da4fe3c42443b5a87f23c11ef87, type: 2}
+--- !u!4 &495029216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495029214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 766.85645, y: 374.9908, z: -59.338123}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563515893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,21 +1135,11 @@ MonoBehaviour:
   handLayout: {fileID: 1666368135}
   playerField: {fileID: 1066325834}
   cardFallowMouseSpeed: 5
-  cardOffset: {x: 0, y: 0}
+  cardOffset: {x: -50, y: -50}
   eventSystem: {fileID: 848134862}
   raycaster: {fileID: 704111270}
   inHandsList: []
-  cardDec:
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
-  - {fileID: 7229891964121384302, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
+  cardsDatabase: {fileID: 495029215}
   startingCardInHandsCount: 3
   countdownText: {fileID: 46012157}
   canvas: {fileID: 0}

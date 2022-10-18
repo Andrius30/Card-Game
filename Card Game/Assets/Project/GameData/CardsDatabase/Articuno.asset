@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4788314467e9a3c43aa03373ad5a8f81, type: 3}
+  m_Name: Articuno
+  m_EditorClassIdentifier: 
+  guiId: 1e6c397cf2bf7f44fa814b97cb98c9c8
+  cardID: 1e6c397cf2bf7f44fa814b97cb98c9c8
+  cardPrefab: {fileID: 8953359210283334726, guid: 18106b1489fabff42b6a0b6a81e9b34d, type: 3}
+  placedCardPrefab: {fileID: 8953359210283334726, guid: aaf8e3f0366248947a12fdb58177a419, type: 3}
+  cardIcon: {fileID: 21300000, guid: db1f898058a6832409dfbc78f4ab4db6, type: 3}
+  cardName: 'Articuno '
+  cardDecription: "Articuno is a legendary bird Pok\xE9mon that can control ice.
+    The flapping of its wings chills the air. As a result, it is said that when this
+    Pok\xE9mon flies, snow will fall. Articuno is a legendary bird Pok\xE9mon that
+    can control ice."
+  cost: 4
+  power: 5
+  cardHealth: 5

@@ -14,7 +14,7 @@ public class FusionCallbacks : MonoBehaviour, INetworkRunnerCallbacks
 
     public static PlayerRef localPlayerRef;
 
-    public NetworkRunner runner;
+    public static NetworkRunner runner;
     LevelManager levelManager;
     [SerializeField] ConnectionStatus status;
     public static ConnectionStatus Status;

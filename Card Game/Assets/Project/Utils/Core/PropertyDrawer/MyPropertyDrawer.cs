@@ -1,9 +1,8 @@
+using UnityEngine;
 #if UNITY_ENGINE
 using UnityEditor;
 #endif
-using UnityEngine;
-
-#if UNITY_ENGINE
+#if UNI
 namespace Andrius.Core.Debuging
 {
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]

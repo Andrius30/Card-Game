@@ -1,19 +1,15 @@
+using Andrius.Core.Utils;
 using Fusion;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
-    public static int ID;
-
-    public int id;
     [SerializeField] RectTransform rect;
-    [SerializeField] string cardName;
-    [SerializeField] string cardDescription;
-    [SerializeField] int cost;
-    [SerializeField] int power;
+    public CardData cardData;
     [SerializeField] GameObject hoverCard;
 
     public static GameObject emptyCard;
@@ -27,9 +23,8 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
     void Awake()
     {
         cam = Camera.main;
-        ID++;
-        id = Random.Range(0, 999999); // FIXME: When cards database will be ready each card should have already pre-defined id's
         spawner = GameObject.FindObjectOfType<CardSpawner>();
+        // TODO: Initialize Card UI from card data
     }
     void Update()
     {
@@ -45,7 +40,7 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
         }
         if (!clickedOnCard) return;
         if (hoverCard.activeInHierarchy)
-            ToggeleHoverCard(id, false);
+            ToggeleHoverCard(cardData.cardID, false);
 
         CardFallowMouse();
 
@@ -56,10 +51,11 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
     {
         if (!clickedOnCard)
         {
-            ToggeleHoverCard(id, true);
+            ToggeleHoverCard(cardData.cardID, true);
+            spawner.InitializeCard(this);
         }
     }
-    public void OnPointerExit(PointerEventData eventData) => ToggeleHoverCard(id, false);
+    public void OnPointerExit(PointerEventData eventData) => ToggeleHoverCard(cardData.cardID, false);
     public void OnPointerDown(PointerEventData eventData)
     {
         if (emptyCard == null)
@@ -75,14 +71,21 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
         if (isHoveringOverPlayerField)
         {
             clickedOnCard = false;
-            Instantiate(spawner.placedCardPrefab, spawner.playerField);
+            if (FusionCallbacks.runner.IsServer)
+            {
+                spawner.SpawnPlacedCard(cardData);
+            }
+            else
+            {
+                spawner.RPC_SendRequestToServerSpawnCard(cardData.cardID);
+            }
             Destroy(gameObject);
             Destroy(emptyCard);
             spawner.inHandsList.Remove(this);
         }
     }
 
-    void ToggeleHoverCard(int id, bool enable)
+    void ToggeleHoverCard(string id, bool enable)
     {
         hoverCard.SetActive(enable);
         spawner.RPC_HoverCard(id, enable);
@@ -110,4 +113,5 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
         }
         return false;
     }
+
 }
