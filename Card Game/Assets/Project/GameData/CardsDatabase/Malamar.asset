@@ -18,9 +18,7 @@ MonoBehaviour:
   placedCardPrefab: {fileID: 8953359210283334726, guid: aaf8e3f0366248947a12fdb58177a419, type: 3}
   cardIcon: {fileID: 21300000, guid: 2382c5c5318b5e64fa2cbc184855d691, type: 3}
   cardName: Malamar
-  cardDecription: "Malamar is a Dark/Psychic type Pok\xE9mon introduced in Generation
-    6 . It is known as the Overturning Pok\xE9mon . Malamar wields some of the strongest
-    hypnotic powers of any Pok\xE9mon and can make its opponents bend to its will."
+  cardDecription: "Malamar is a Dark/Psychic type Pok\xE9mon."
   cost: 3
   power: 2
   cardHealth: 4

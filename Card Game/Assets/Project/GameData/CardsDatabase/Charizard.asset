@@ -19,9 +19,7 @@ MonoBehaviour:
   cardIcon: {fileID: 21300000, guid: 0f7d13bc17730554ab6e7198fe21d8c4, type: 3}
   cardName: 'Charizard '
   cardDecription: Charizard having wings that can carry them close to an altitude
-    of 4,600 feet, flying proudly around the sky and constantly seeking for powerful
-    opponents to battle with. They can breathe intense flames that can melt any material,
-    but will never torch a weaker foe.
+    of 4,600 feet, flying proudly around the sky .
   cost: 4
   power: 7
   cardHealth: 7

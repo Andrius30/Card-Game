@@ -19,9 +19,7 @@ MonoBehaviour:
   cardIcon: {fileID: 21300000, guid: e9125f38526baef4f8eefa8982d82eef, type: 3}
   cardName: Psyduck
   cardDecription: "Psyduck is a yellow Pok\xE9mon resembling a duck or a bipedal
-    platypus. On top of its head are three thick strands of black hair, and it has
-    a wide, flat cream-colored beak. Psyduck's eyes seem vacant and have tiny pupils.
-    Its legs and tail are stubby, and it has cream-colored webbed feet."
+    platypus."
   cost: 1
   power: 1
   cardHealth: 1

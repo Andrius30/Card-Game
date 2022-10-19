@@ -19,9 +19,7 @@ MonoBehaviour:
   cardIcon: {fileID: 21300000, guid: 870ce15ed5c88da46aa3d40856abcf29, type: 3}
   cardName: Jolteon
   cardDecription: "Jolteon (Japanese: \u30B5\u30F3\u30C0\u30FC\u30B9 Thunders) is
-    an Electric-type Pok\xE9mon introduced in Generation I. It evolves from Eevee
-    when exposed to a Thunder Stone. It is one of Eevee's final forms, the others
-    being Vaporeon, Flareon, Espeon, Umbreon, Leafeon, Glaceon, and Sylveon."
+    an Electric-type Pok\xE9mon."
   cost: 3
   power: 3
   cardHealth: 4

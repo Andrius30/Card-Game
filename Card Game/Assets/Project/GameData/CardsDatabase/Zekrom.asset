@@ -18,10 +18,8 @@ MonoBehaviour:
   placedCardPrefab: {fileID: 8953359210283334726, guid: aaf8e3f0366248947a12fdb58177a419, type: 3}
   cardIcon: {fileID: 21300000, guid: 41206cea154efdf4e98aa53f94761e75, type: 3}
   cardName: Zekrom
-  cardDecription: "Concealing itself in lightning clouds, it flies throughout the
-    Unova region. It creates electricity in its tail. This legendary Pok\xE9mon can
-    scorch the world with lightning. It assists those who want to build an ideal
-    world."
+  cardDecription: Concealing itself in lightning clouds, it flies throughout the
+    Unova region. It creates electricity.
   cost: 5
   power: 7
   cardHealth: 8

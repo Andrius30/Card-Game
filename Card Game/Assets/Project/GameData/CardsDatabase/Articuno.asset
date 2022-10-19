@@ -18,10 +18,7 @@ MonoBehaviour:
   placedCardPrefab: {fileID: 8953359210283334726, guid: aaf8e3f0366248947a12fdb58177a419, type: 3}
   cardIcon: {fileID: 21300000, guid: db1f898058a6832409dfbc78f4ab4db6, type: 3}
   cardName: 'Articuno '
-  cardDecription: "Articuno is a legendary bird Pok\xE9mon that can control ice.
-    The flapping of its wings chills the air. As a result, it is said that when this
-    Pok\xE9mon flies, snow will fall. Articuno is a legendary bird Pok\xE9mon that
-    can control ice."
+  cardDecription: "Articuno is a legendary bird Pok\xE9mon that can control ice. "
   cost: 4
   power: 5
   cardHealth: 5

@@ -18,10 +18,7 @@ MonoBehaviour:
   placedCardPrefab: {fileID: 8953359210283334726, guid: aaf8e3f0366248947a12fdb58177a419, type: 3}
   cardIcon: {fileID: 21300000, guid: d0e9ce73db9923246a27a2850a8b9a65, type: 3}
   cardName: Pikaciu
-  cardDecription: "Pikachu are small, and cute mouse-like Pok\xE9mon. They are almost
-    completely covered by yellow fur. They have long yellow ears that are tipped
-    with black. A Pikachu's back has two brown stripes, and its large tail is notable
-    for being shaped like a lightning bolt, yet its brown tip is almost always forgotten."
+  cardDecription: "Pikachu are small, and cute mouse-like Pok\xE9mon."
   cost: 1
   power: 1
   cardHealth: 1
