@@ -1,5 +1,6 @@
 using Andrius.Core.Debuging;
 using Andrius.Core.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
     [ReadOnly] public Transform playerCardField;
     [ReadOnly] public Transform oponentCardField;
     [ReadOnly] public int playersJoined = 0;
+
+    public List<PlacedCard> playerPlaycedCards = new List<PlacedCard>();
+    public List<PlacedCard> oponentPlaycedCards = new List<PlacedCard>();
 
     GameObject field;
 

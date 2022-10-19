@@ -52,7 +52,10 @@ public class Card : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler,
         if (!clickedOnCard)
         {
             ToggeleHoverCard(cardData.cardID, true);
-            spawner.InitializeCard(this);
+            Image img;
+            TextMeshProUGUI nameText, descriptionText, cardPowerText, cardHealthText;
+            spawner.FindCardComponents(hoverCard.transform, out img, out nameText, out descriptionText, out cardPowerText, out cardHealthText);
+            spawner.InitializeCard(cardData, img, nameText, descriptionText, cardPowerText, cardHealthText);
         }
     }
     public void OnPointerExit(PointerEventData eventData) => ToggeleHoverCard(cardData.cardID, false);

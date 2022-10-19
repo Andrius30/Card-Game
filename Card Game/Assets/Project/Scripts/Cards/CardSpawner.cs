@@ -130,11 +130,16 @@ public class CardSpawner : NetworkBehaviour
         {
             cardData = cardsDatabase.GetCardbyId(id);
             obj = Instantiate(cardData.placedCardPrefab, playerField);
+            var crd = obj.GetComponent<PlacedCard>();
+            GameManager.instance.playerPlaycedCards.Add(crd);
         }
         else
         {
             cardData = cardsDatabase.GetCardbyId(id);
             obj = Instantiate(cardData.placedCardPrefab, GameManager.instance.oponentCardField);
+            var crd = obj.GetComponent<PlacedCard>();
+            GameManager.instance.oponentPlaycedCards.Add(crd);
+            crd.isEnemy = true;
         }
         PlacedCard card = obj.GetComponent<PlacedCard>();
         InitializePlacedCard(card, cardData);
@@ -157,7 +162,7 @@ public class CardSpawner : NetworkBehaviour
         InitializeCard(cardData, img, nameText, descriptionText, cardPowerText, cardHealthText);
     }
 
-    void InitializeCard(CardData cardData, Image img, TextMeshProUGUI nameText, TextMeshProUGUI descriptionText, TextMeshProUGUI cardPowerText, TextMeshProUGUI cardHealthText)
+    public void InitializeCard(CardData cardData, Image img, TextMeshProUGUI nameText, TextMeshProUGUI descriptionText, TextMeshProUGUI cardPowerText, TextMeshProUGUI cardHealthText)
     {
         img.sprite = cardData.cardIcon;
         nameText.text = cardData.cardName;
@@ -183,6 +188,7 @@ public class CardSpawner : NetworkBehaviour
             obj.transform.SetParent(playerField);
             PlacedCard card = obj.GetComponent<PlacedCard>();
             card.cardData = cardData;
+            GameManager.instance.playerPlaycedCards.Add(card);
             Image img;
             TextMeshProUGUI nameText, descriptionText, cardPowerText, cardHealthText;
             FindCardComponents(card.transform, out img, out nameText, out descriptionText, out cardPowerText, out cardHealthText);

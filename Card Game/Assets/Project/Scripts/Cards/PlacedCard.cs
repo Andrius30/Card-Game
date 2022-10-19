@@ -1,21 +1,27 @@
+using Andrius.Core.Debuging;
 using Fusion;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI.Extensions;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(UILineRendererList))]
-public class PlacedCard : NetworkBehaviour, ISpawned, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class PlacedCard : NetworkBehaviour, ISpawned, IPointerDownHandler, IPointerUpHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public string ID;
+    public bool isEnemy = false;
     public CardData cardData;
     UILineRendererList lineRenderer;
     [HideInInspector] public CardSpawner spawner;
     [SerializeField] Vector2 offset; // -850, -370
     Vector2 startingPosition;
     Vector2 lastDragPosition;
+    bool hoveringOverEnemyCard = false;
+    public int cardHealth;
 
     void Start()
     {
+        cardHealth = cardData.cardHealth;
         lineRenderer = GetComponent<UILineRendererList>();
         try
         {
@@ -24,6 +30,19 @@ public class PlacedCard : NetworkBehaviour, ISpawned, IPointerDownHandler, IPoin
         }
         catch { }
     }
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            if (hoveringOverEnemyCard)
+            {
+                hoveringOverEnemyCard = false;
+                Debug.Log($"Pointer up. Initiate batle :18:yellow;".Interpolate());
+                BatleSystem.onStartBattle?.Invoke();
+            }
+        }
+    }
+
     public override void Spawned()
     {
         base.Spawned();
@@ -34,6 +53,13 @@ public class PlacedCard : NetworkBehaviour, ISpawned, IPointerDownHandler, IPoin
                 spawner = FindObjectOfType<CardSpawner>();
             }
             transform.SetParent(GameManager.instance.oponentCardField);
+            if (transform.parent.name == GameManager.instance.oponentCardField.name)
+            {
+                isEnemy = true;
+                GameManager.instance.oponentPlaycedCards.Add(this);
+            }
+            else
+                isEnemy = false;
         }
     }
 
@@ -48,15 +74,18 @@ public class PlacedCard : NetworkBehaviour, ISpawned, IPointerDownHandler, IPoin
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log($"Pointer down");
-        var rect = GetComponent<RectTransform>();
-        startingPosition = new Vector3(rect.position.x, rect.position.y);
-        if (lineRenderer == null)
+        if (!isEnemy)
         {
-            Debug.LogError($"Line renderer list null");
-            return;
+            BatleSystem.onGetPlayerData?.Invoke(gameObject, cardData);
+            var rect = GetComponent<RectTransform>();
+            startingPosition = new Vector3(rect.position.x, rect.position.y);
+            if (lineRenderer == null)
+            {
+                Debug.LogError($"Line renderer list null");
+                return;
+            }
+            lineRenderer.AddPoint(startingPosition + offset);
         }
-        lineRenderer.AddPoint(startingPosition + offset);
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -71,10 +100,24 @@ public class PlacedCard : NetworkBehaviour, ISpawned, IPointerDownHandler, IPoin
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log($"Pointer up. Initiate batle");
         lineRenderer.RemovePoint(startingPosition);
         lineRenderer.RemovePoint(lastDragPosition);
 
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (isEnemy)
+        {
+            BatleSystem.onGetOponentData?.Invoke(gameObject, cardData);
+            hoveringOverEnemyCard = true;
+        }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isEnemy)
+        {
+            hoveringOverEnemyCard = true;
+        }
     }
 
 }
