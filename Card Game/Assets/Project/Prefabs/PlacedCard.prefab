@@ -936,6 +936,7 @@ GameObject:
   - component: {fileID: -5509977435433732472}
   - component: {fileID: 3988431600726656439}
   - component: {fileID: -5672828778782451001}
+  - component: {fileID: 8633729849583058099}
   m_Layer: 5
   m_Name: PlacedCard
   m_TagString: Untagged
@@ -1035,8 +1036,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  ID: 
   cardData: {fileID: 0}
   spawner: {fileID: 0}
+  offset: {x: -850, y: -370}
+--- !u!114 &8633729849583058099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8953359210283334726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2b9a57e8044f94d98f266f19cb1646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cdec416d0dd03c846a63be2a2f613cd4, type: 3}
+  m_improveResolution: 2
+  m_Resolution: 0
+  m_useNativeSize: 0
+  m_points: []
+  lineThickness: 10
+  relativeSize: 0
+  lineList: 1
+  lineCaps: 0
+  bezierSegmentsPerCurve: 1
+  LineJoins: 0
+  BezierMode: 3
+  drivenExternally: 0
 --- !u!1 &8953359210293114523
 GameObject:
   m_ObjectHideFlags: 0
